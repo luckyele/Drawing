@@ -21,14 +21,10 @@ def getSlopeOfLineSegment(dot1, dot2):
 
 def get33dot(dot1, dot2):
     C = Dot()
-    L = distanceOf2Dot(dot1, dot2)
-    k = getSlopeOfLineSegment(dot1, dot2)
-    cosa = 1/((k**2+1)**0.5)
-    sina = k/((k**2+1)**0.5)
     cos60 = math.cos(math.radians(60))
     sin60 = math.sin(math.radians(60))
-    C.x = dot1.x + (cosa * cos60 - sina * sin60) * L
-    C.y = dot1.y + (sina * cos60 + cosa * sin60) * L
+    C.x = dot1.x +  (dot2.x - dot1.x) * cos60 - (dot2.y - dot1.y) * sin60
+    C.y = dot1.y +  (dot2.x - dot1.x) * sin60 + (dot2.y - dot1.y) * cos60
     return C
 
 def one1(dot1, dot2):
